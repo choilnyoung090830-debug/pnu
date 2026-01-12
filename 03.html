@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2019-2023 소득 지표 심층 분석 리포트</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800&display=swap');
+        body { font-family: 'Pretendard', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .chart-container { position: relative; height: 350px; width: 100%; }
+        .gradient-header { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .content-card { background: white; border-radius: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        .accent-border { border-left: 4px solid #3b82f6; }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <!-- Header -->
+    <header class="gradient-header text-white py-16 px-6 text-center shadow-xl mb-12">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">2019 ~ 2023 소득 지표 심층 분석</h1>
+            <p class="text-slate-400 text-lg leading-relaxed">가구 소득의 구조적 변화와 소득 불평등 지표를 중심으로 한 5개년 경제 데이터 분석 리포트</p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 pb-20">
+        
+        <!-- Summary Stats Section -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div class="content-card p-6 border-b-4 border-blue-500">
+                <p class="text-slate-400 text-xs font-bold uppercase mb-2">2023 평균 소득</p>
+                <h3 class="text-3xl font-black">363만 원</h3>
+                <p class="text-blue-500 text-xs mt-2 font-semibold">↑ 연평균 약 4% 성장</p>
+            </div>
+            <div class="content-card p-6 border-b-4 border-indigo-500">
+                <p class="text-slate-400 text-xs font-bold uppercase mb-2">2023 중위 소득</p>
+                <h3 class="text-3xl font-black">278만 원</h3>
+                <p class="text-indigo-500 text-xs mt-2 font-semibold">↑ 실질 구매력의 척도</p>
+            </div>
+            <div class="content-card p-6 border-b-4 border-orange-500">
+                <p class="text-slate-400 text-xs font-bold uppercase mb-2">2023 하위 20% (P20)</p>
+                <h3 class="text-3xl font-black">140만 원</h3>
+                <p class="text-orange-500 text-xs mt-2 font-semibold">저소득층 소득 하한선 상승</p>
+            </div>
+            <div class="content-card p-6 border-b-4 border-emerald-500">
+                <p class="text-slate-400 text-xs font-bold uppercase mb-2">2023 하위 80% (P80)</p>
+                <h3 class="text-3xl font-black">518만 원</h3>
+                <p class="text-emerald-500 text-xs mt-2 font-semibold">상위권 진입을 위한 허들</p>
+            </div>
+        </section>
+
+        <!-- Main Analysis Section 1 -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <div class="lg:col-span-2 space-y-8">
+                <section class="content-card p-8">
+                    <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                        <span class="w-2 h-8 bg-blue-500 rounded-full"></span>
+                        평균 및 중위소득의 추이와 경제적 의미
+                    </h2>
+                    <div class="chart-container mb-8">
+                        <canvas id="mainIncomeChart"></canvas>
+                    </div>
+                    <div class="prose max-w-none text-slate-600 space-y-4">
+                        <p>
+                            지난 5년간 대한민국의 가구 소득은 코로나19 팬데믹이라는 전 세계적인 위기 속에서도 <strong>지속적인 우상향 곡선</strong>을 그렸습니다. 2019년 309만 원이었던 평균 소득은 2023년 363만 원으로 약 17.5% 증가했습니다.
+                        </p>
+                        <p class="accent-border pl-4 bg-slate-50 py-3 italic">
+                            "평균소득은 국가 전체의 경제 파이가 커지고 있음을 보여주는 반면, 중위소득은 실제 서민들이 체감하는 생활 수준의 중간 지점을 의미합니다."
+                        </p>
+                        <p>
+                            분석 결과, 중위소득(18.8% 증가)이 평균소득(17.5% 증가)보다 다소 가파르게 상승한 것은 긍정적인 신호입니다. 이는 소득 성장이 일부 고소득층에만 집중되지 않고, <strong>중간 계층까지 비교적 고르게 분산</strong>되고 있음을 시사합니다.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="content-card p-8">
+                    <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                        <span class="w-2 h-8 bg-emerald-500 rounded-full"></span>
+                        소득 계층별 분배 구조 분석 (P20 vs P80)
+                    </h2>
+                    <div class="chart-container mb-8">
+                        <canvas id="boundaryChart"></canvas>
+                    </div>
+                    <div class="prose max-w-none text-slate-600 space-y-4">
+                        <p>
+                            소득 양극화를 나타내는 지표인 P20(하위 20% 경계)과 P80(하위 80% 경계)의 변화는 우리 사회의 분배 구조를 명확히 보여줍니다.
+                        </p>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li><strong>저소득층 하한선의 상승:</strong> P20 지표는 2019년 116만 원에서 2023년 140만 원으로 상승했습니다. 이는 최저임금 인상과 사회적 안전망 강화가 하위 소득 구간의 최저선을 끌어올리는 데 기여했음을 의미합니다.</li>
+                            <li><strong>상위권 진입 장벽의 확대:</strong> 반면 P80 지표는 518만 원을 기록하며 절대적인 금액 차이(Gap)가 하위권과의 격차를 유지하고 있습니다. 이는 고부가가치 산업 중심의 경제 구조가 상위권 소득을 강력하게 지지하고 있음을 나타냅니다.</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Sidebar: Insight & Data -->
+            <div class="space-y-8">
+                <section class="content-card p-6 bg-slate-900 text-white">
+                    <h3 class="text-xl font-bold mb-6">💡 전문가 Insight</h3>
+                    <div class="space-y-6 text-sm text-slate-300">
+                        <div class="bg-white/5 p-4 rounded-xl">
+                            <h4 class="text-white font-bold mb-2">성장의 질적 분석</h4>
+                            <p>단순한 금액 상승보다는 물가 상승률을 고려한 실질 소득의 방어력이 중요합니다. 2022-2023년 고물가 시기에도 소득 지표가 꺾이지 않은 것은 주목할 만합니다.</p>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-xl">
+                            <h4 class="text-white font-bold mb-2">미래 전망</h4>
+                            <p>디지털 전환과 AI 산업의 확산으로 직업 간 소득 편차가 커질 가능성이 있습니다. 향후 P80 지표의 상승 속도가 더 빨라질 것으로 예상됩니다.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-card p-6">
+                    <h3 class="text-lg font-bold mb-4">📊 상세 데이터 테이블</h3>
+                    <div class="text-xs space-y-3">
+                        <div class="flex justify-between border-b pb-2">
+                            <span class="text-slate-400">항목 (2023년 기준)</span>
+                            <span class="font-bold">금액 (만 원)</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>평균 소득</span>
+                            <span class="font-semibold">363</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>중위 소득</span>
+                            <span class="font-semibold">278</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>하위 80% (P80)</span>
+                            <span class="font-semibold">518</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>하위 20% (P20)</span>
+                            <span class="font-semibold text-orange-600">140</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Conclusion Section -->
+        <section class="content-card p-10 bg-blue-50 border border-blue-100">
+            <h2 class="text-3xl font-extrabold text-blue-900 mb-6">종합 결론</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-blue-800 leading-relaxed">
+                <p>
+                    종합적으로 볼 때, 지난 5년간의 소득 데이터는 <strong>'안정적인 외연 확장'</strong>으로 정의할 수 있습니다. 중위소득의 견조한 상승은 중산층의 붕괴 우려를 완화시키고 있으며, 전 계층의 소득 하한선이 상승하며 사회적 기초 자산이 강화되었습니다.
+                </p>
+                <p>
+                    다만, 상위 20%를 가르는 P80 지표가 500만 원 중반대를 향해 가면서 계층 이동을 위한 필요 소득 수준이 점차 높아지고 있다는 점은 정책적 과제로 남아 있습니다. 향후 성장의 결실이 보다 고르게 배분될 수 있는 구조적 고민이 필요합니다.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center text-slate-400 text-sm py-12 border-t border-slate-200">
+        <p>© 2026 소득 분석 센터. 본 리포트는 2019~2023년 공공 데이터를 기반으로 작성되었습니다.</p>
+    </footer>
+
+    <script>
+        const years = ['2019년', '2020년', '2021년', '2022년', '2023년'];
+
+        // Chart 1: Average & Median
+        const ctx1 = document.getElementById('mainIncomeChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [
+                    {
+                        label: '평균 소득 (만 원)',
+                        data: [309, 321, 333, 348, 363],
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        borderWidth: 4,
+                        pointRadius: 6,
+                        pointBackgroundColor: '#fff',
+                        pointBorderWidth: 3
+                    },
+                    {
+                        label: '중위 소득 (만 원)',
+                        data: [234, 242, 250, 264, 278],
+                        borderColor: '#6366f1',
+                        backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        borderWidth: 4,
+                        pointRadius: 6,
+                        pointBackgroundColor: '#fff',
+                        pointBorderWidth: 3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { 
+                    legend: { position: 'top', labels: { font: { weight: 'bold' } } },
+                    tooltip: { padding: 12, cornerRadius: 8 }
+                },
+                scales: { 
+                    y: { 
+                        beginAtZero: false, 
+                        grid: { color: '#f1f5f9' },
+                        ticks: { callback: (val) => val + '만' }
+                    } 
+                }
+            }
+        });
+
+        // Chart 2: P20 & P80
+        const ctx2 = document.getElementById('boundaryChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: years,
+                datasets: [
+                    {
+                        label: '상위권 경계 (P80)',
+                        data: [448, 463, 478, 498, 518],
+                        backgroundColor: '#10b981',
+                        borderRadius: 8,
+                        barPercentage: 0.6
+                    },
+                    {
+                        label: '하위권 경계 (P20)',
+                        data: [116, 120, 125, 132, 140],
+                        backgroundColor: '#f59e0b',
+                        borderRadius: 8,
+                        barPercentage: 0.6
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { 
+                    legend: { position: 'top' },
+                    tooltip: { padding: 12 }
+                },
+                scales: { 
+                    y: { 
+                        beginAtZero: true, 
+                        grid: { color: '#f1f5f9' },
+                        ticks: { callback: (val) => val + '만' }
+                    } 
+                }
+            }
+        });
+    </script>
+</body>
+</html>
