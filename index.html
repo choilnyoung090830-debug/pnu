@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>빅데이터분석 | 최인영</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Pretendard', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark body {
+            background-color: #020617;
+            color: #f8fafc;
+        }
+
+        .light body {
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        /* 배경 효과 */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        .dark .bg-glow {
+            background: radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.1) 0%, transparent 40%);
+        }
+        .light .bg-glow {
+            background: radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.05) 0%, transparent 40%);
+        }
+
+        .glass-card {
+            backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .light .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+        }
+        .dark .glass-card:hover {
+            border-color: rgba(99, 102, 241, 0.5);
+            background: rgba(30, 41, 59, 0.7);
+        }
+        .light .glass-card:hover {
+            border-color: #6366f1;
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #22d3ee 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .mode-toggle {
+            width: 44px;
+            height: 24px;
+            border-radius: 20px;
+            position: relative;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .dark .mode-toggle { background: #334155; }
+        .light .mode-toggle { background: #e2e8f0; }
+
+        .toggle-dot {
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 3px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+        .dark .toggle-dot { left: 23px; color: #1e293b; }
+        .light .toggle-dot { left: 3px; color: #6366f1; }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="bg-glow"></div>
+
+    <!-- Nav -->
+    <nav class="sticky top-0 z-50 backdrop-blur-lg border-b dark:border-white/5 light:border-slate-200">
+        <div class="container mx-auto px-8 h-20 flex justify-between items-center">
+            <h2 class="text-xl font-black tracking-tight gradient-text">빅데이터분석</h2>
+            
+            <div class="flex items-center gap-6">
+                <!-- Theme Toggle -->
+                <div class="mode-toggle" onclick="toggleTheme()">
+                    <div class="toggle-dot">
+                        <i class="fa-solid fa-sun light:block dark:hidden"></i>
+                        <i class="fa-solid fa-moon dark:block hidden"></i>
+                    </div>
+                </div>
+
+                <div class="h-6 w-[1px] bg-slate-200 dark:bg-white/10 hidden md:block"></div>
+
+                <div class="text-right">
+                    <p class="text-xs font-bold dark:text-white light:text-slate-800">동주여자고등학교</p>
+                    <p class="text-[10px] text-indigo-500 font-semibold tracking-wider">최인영</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <header class="container mx-auto px-8 pt-24 pb-20 text-center relative">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full dark:bg-indigo-500/10 dark:border-indigo-500/20 light:bg-indigo-50 light:border-indigo-100 border">
+            <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+            <span class="text-[10px] font-bold text-indigo-500 dark:text-indigo-400 uppercase tracking-widest">Busan National University - Big Data Analysis</span>
+        </div>
+        
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-8 tracking-tight leading-tight dark:text-white light:text-slate-900">
+            데이터로 읽어내는 <br> 
+            <span class="gradient-text text-5xl md:text-7xl">세상의 숨겨진 흐름</span>
+        </h1>
+        
+        <p class="dark:text-slate-400 light:text-slate-500 max-w-2xl mx-auto text-lg leading-relaxed font-light">
+            부산대학교(PNU) <span class="font-semibold dark:text-white light:text-indigo-600">'빅데이터분석'</span> 과정을 성공적으로 이수하며 쌓은 역량을 바탕으로<br>
+            숫자 너머에 존재하는 우리 사회의 구체적인 가치와 변화를 기록합니다.
+        </p>
+    </header>
+
+    <!-- Project Grid -->
+    <main class="container mx-auto px-8 pb-32">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- 01: Traffic Violation -->
+            <div class="glass-card rounded-[2rem] p-10 flex flex-col relative group">
+                <a href="01.html" class="card-link"></a>
+                <div class="text-rose-500 text-3xl mb-6"><i class="fa-solid fa-car-burst"></i></div>
+                <div class="mb-4">
+                    <span class="text-[10px] font-black tracking-widest text-rose-500 uppercase">도시 안전 분석</span>
+                </div>
+                <h3 class="text-xl font-bold mb-4 dark:text-white light:text-slate-800">신호위반 사고 패턴의 재구성</h3>
+                <p class="dark:text-slate-400 light:text-slate-500 text-sm leading-relaxed mb-8">
+                    경찰청 데이터를 정제하여 사고가 빈번한 골든 타임을 발견했습니다. 단순한 통계를 넘어 시민의 안전을 지킬 수 있는 데이터 기반의 해결책을 제안합니다.
+                </p>
+                <div class="mt-auto flex items-center text-xs font-bold text-slate-400 group-hover:text-indigo-500 transition-colors">
+                    상세 분석 보기 <i class="fa-solid fa-arrow-right-long ml-2"></i>
+                </div>
+            </div>
+
+            <!-- 02: Global Warming -->
+            <div class="glass-card rounded-[2rem] p-10 flex flex-col relative group">
+                <a href="02.html" class="card-link"></a>
+                <div class="text-emerald-500 text-3xl mb-6"><i class="fa-solid fa-leaf"></i></div>
+                <div class="mb-4">
+                    <span class="text-[10px] font-black tracking-widest text-emerald-500 uppercase">환경 임팩트</span>
+                </div>
+                <h3 class="text-xl font-bold mb-4 dark:text-white light:text-slate-800">지구 온난화, 가속화의 증거</h3>
+                <p class="dark:text-slate-400 light:text-slate-500 text-sm leading-relaxed mb-8">
+                    기상청의 30년치 방대한 데이터를 시각화하여 기온 상승 추이를 추적했습니다. 기후 변화의 심각성을 수치로 증명하여 환경 의식을 고취하는 데 집중했습니다.
+                </p>
+                <div class="mt-auto flex items-center text-xs font-bold text-slate-400 group-hover:text-indigo-500 transition-colors">
+                    상세 분석 보기 <i class="fa-solid fa-arrow-right-long ml-2"></i>
+                </div>
+            </div>
+
+            <!-- 03: Income Inequality (Team) -->
+            <div class="glass-card rounded-[2rem] p-10 flex flex-col relative group border-indigo-500/20">
+                <a href="03.html" class="card-link"></a>
+                <div class="text-amber-500 text-3xl mb-6"><i class="fa-solid fa-chart-line"></i></div>
+                <div class="mb-4 flex gap-3">
+                    <span class="text-[10px] font-black tracking-widest text-amber-500 uppercase">경제 격차 리포트</span>
+                    <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-white/10 dark:text-slate-400 light:text-slate-400">TEAM</span>
+                </div>
+                <h3 class="text-xl font-bold mb-4 dark:text-white light:text-slate-800">소득 계층별 불평등 지표</h3>
+                <p class="dark:text-slate-400 light:text-slate-500 text-sm leading-relaxed mb-8">
+                    가계동향 데이터를 통해 계층 간 소득 격차의 현실을 조명했습니다. 평균의 함정을 벗어나 중위 소득과 하위 소득의 추이를 면밀히 비교한 협업 연구입니다.
+                </p>
+                <div class="mt-auto flex items-center text-xs font-bold text-slate-400 group-hover:text-indigo-500 transition-colors">
+                    상세 분석 보기 <i class="fa-solid fa-arrow-right-long ml-2"></i>
+                </div>
+            </div>
+
+            <!-- 04: Academic Path -->
+            <div class="glass-card rounded-[2rem] p-10 flex flex-col relative group">
+                <a href="04.html" class="card-link"></a>
+                <div class="text-purple-500 text-3xl mb-6"><i class="fa-solid fa-user-graduate"></i></div>
+                <div class="mb-4">
+                    <span class="text-[10px] font-black tracking-widest text-purple-500 uppercase">성장 데이터</span>
+                </div>
+                <h3 class="text-xl font-bold mb-4 dark:text-white light:text-slate-800">미래를 설계하는 자기분석</h3>
+                <p class="dark:text-slate-400 light:text-slate-500 text-sm leading-relaxed mb-8">
+                    나의 역량과 학업 데이터를 결합해 최적의 진학 경로를 시뮬레이션했습니다. 주관적인 꿈을 객관적인 데이터로 구체화하여 나만의 로드맵을 구축했습니다.
+                </p>
+                <div class="mt-auto flex items-center text-xs font-bold text-slate-400 group-hover:text-indigo-500 transition-colors">
+                    상세 분석 보기 <i class="fa-solid fa-arrow-right-long ml-2"></i>
+                </div>
+            </div>
+
+            <!-- 05: AI YouTube Sentiment (Team) -->
+            <div class="glass-card rounded-[2rem] p-10 flex flex-col relative group">
+                <a href="05.html" class="card-link"></a>
+                <div class="text-sky-500 text-3xl mb-6"><i class="fa-brands fa-youtube"></i></div>
+                <div class="mb-4 flex gap-3">
+                    <span class="text-[10px] font-black tracking-widest text-sky-500 uppercase">뉴미디어 인사이트</span>
+                    <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-white/10 dark:text-slate-400 light:text-slate-400">TEAM</span>
+                </div>
+                <h3 class="text-xl font-bold mb-4 dark:text-white light:text-slate-800">AI 윤리를 바라보는 대중의 시선</h3>
+                <p class="dark:text-slate-400 light:text-slate-500 text-sm leading-relaxed mb-8">
+                    유튜브 소셜 데이터를 크롤링하여 AI 기술에 대한 대중의 감성을 분석했습니다. 인공지능 시대를 맞이하는 사람들의 기대와 두려움을 키워드로 추출했습니다.
+                </p>
+                <div class="mt-auto flex items-center text-xs font-bold text-slate-400 group-hover:text-indigo-500 transition-colors">
+                    상세 분석 보기 <i class="fa-solid fa-arrow-right-long ml-2"></i>
+                </div>
+            </div>
+
+            <!-- Blank -->
+            <div class="flex flex-col items-center justify-center p-10 border-2 border-dashed dark:border-white/5 light:border-slate-100 rounded-[2rem]">
+                <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest">More Findings Coming Soon</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-20 text-center border-t dark:border-white/5 light:border-slate-100 bg-white/5">
+        <div class="container mx-auto px-8">
+            <h4 class="dark:text-slate-500 light:text-slate-400 text-[10px] font-bold tracking-[0.4em] uppercase mb-8">Busan National University Big Data Analysis Course Archive</h4>
+            <div class="flex justify-center gap-10 dark:text-slate-600 light:text-slate-300">
+                <i class="fa-solid fa-database hover:text-indigo-500 transition-colors cursor-pointer"></i>
+                <i class="fa-solid fa-code hover:text-indigo-500 transition-colors cursor-pointer"></i>
+                <i class="fa-solid fa-chart-pie hover:text-indigo-500 transition-colors cursor-pointer"></i>
+            </div>
+            <p class="mt-10 dark:text-slate-700 light:text-slate-400 text-[10px]">&copy; 2024 Choi In-young. Dong-ju Girls' High School.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.glass-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.7s cubic-bezier(0.2, 1, 0.3, 1)';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
