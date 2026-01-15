@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 시대의 그림자 분석 보고서</title>
+    <title>AI 시대의 그림자: 보안과 사생활 보호 분석</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
@@ -11,220 +11,198 @@
             darkMode: 'class',
             theme: {
                 extend: {
-                    colors: { brand: '#6366f1' }
+                    colors: { brand: '#4f46e5', accent: '#f43f5e' }
                 }
             }
         }
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700;800&display=swap');
-        body { font-family: 'Pretendard', sans-serif; scroll-behavior: smooth; transition: background-color 0.3s, color 0.3s; }
-        .glass-header { backdrop-filter: blur(12px); background: rgba(255, 255, 255, 0.8); }
-        .dark .glass-header { background: rgba(15, 23, 42, 0.8); }
-        .gradient-text {
-            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+        body { font-family: 'Pretendard', sans-serif; scroll-behavior: smooth; }
+        .glass-nav { backdrop-filter: blur(12px); background: rgba(255, 255, 255, 0.8); }
+        .dark .glass-nav { background: rgba(15, 23, 42, 0.8); }
+        .gradient-heading {
+            background: linear-gradient(135deg, #4f46e5 0%, #ec4899 100%);
             -webkit-background-clip: text;
-            -webkit-fill-color: transparent;
-            color: transparent;
+            -webkit-text-fill-color: transparent;
         }
-        .section-card { transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.05); }
-        .section-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1); }
-        .news-tag { @apply px-2 py-0.5 rounded text-[10px] font-bold uppercase; }
-        .dark .section-card { border-color: rgba(255,255,255,0.05); }
+        .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 antialiased">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass-header border-b border-slate-200 dark:border-slate-800">
-        <div class="container mx-auto px-4 md:px-6 h-16 flex justify-between items-center">
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-slate-200 dark:border-slate-800">
+        <div class="container mx-auto px-6 h-16 flex justify-between items-center">
             <div class="flex items-center gap-2">
-                <i class="fa-solid fa-shield-halved text-brand text-xl"></i>
-                <span class="font-bold tracking-tight">AI 보안 리포트 <span class="text-[10px] bg-brand text-white px-1.5 py-0.5 rounded ml-1 italic">Final Edition</span></span>
+                <i class="fa-solid fa-shield-virus text-brand text-2xl"></i>
+                <span class="font-bold tracking-tight text-lg">AI 보안 분석 리포트</span>
             </div>
-            
-            <div class="flex items-center gap-3 md:gap-4">
-                <a href="https://github.com/choilnyoung090830-debug/pnu/" target="_blank" class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-brand hover:text-white transition-all shadow-sm" title="PNU 홈으로">
+            <div class="flex items-center gap-4">
+                <a href="https://choilnyoung090830-debug.github.io/pnu/" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
                     <i class="fa-solid fa-house"></i>
                 </a>
-                <button id="theme-toggle" class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-brand hover:text-white transition-all shadow-sm" title="테마 변경">
+                <button id="theme-toggle" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
                     <i id="theme-icon" class="fa-solid fa-moon"></i>
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- Header Section -->
-    <header class="pt-32 pb-12 px-6 text-center">
+    <!-- Hero Section -->
+    <header class="pt-32 pb-16 px-6 text-center">
         <div class="container mx-auto max-w-4xl">
-            <h1 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">
-                AI의 혁신 이면:<br>
-                <span class="gradient-text text-4xl md:text-6xl">보안 숙제와 사생활 침해 분석</span>
+            <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-brand/10 text-brand text-xs font-bold tracking-widest uppercase">
+                2026 Security & Privacy Analysis
+            </div>
+            <h1 class="text-4xl md:text-6xl font-black mb-8 leading-tight">
+                AI의 혁신, 그 이면의 <br>
+                <span class="gradient-heading">데이터 주권과 보안 위협</span>
             </h1>
-            <p class="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
-                AI는 우리에게 편리함을 주지만, 그 과정에서 '나도 모르게 수집되는 데이터'와 
-                '학습된 데이터의 재유출'이라는 보안 과제를 안겨주고 있습니다.
+            <p class="text-slate-500 dark:text-slate-400 text-lg leading-relaxed max-w-2xl mx-auto">
+                데이터 수집부터 사생활 침해, 그리고 딥페이크까지. <br>
+                AI 시대의 지속 가능한 발전을 위한 핵심 보안 쟁점을 분석합니다.
             </p>
         </div>
     </header>
 
-    <main class="container mx-auto px-6 max-w-5xl pb-32 space-y-12">
+    <main class="container mx-auto px-6 max-w-5xl space-y-12 pb-32">
         
-        <!-- Section 1: 데이터 수집 및 사생활 침해 -->
-        <section id="issue" class="section-card bg-white dark:bg-slate-900 rounded-3xl p-8 md:p-10 shadow-sm border-l-4 border-l-indigo-500">
-            <div class="flex items-center gap-4 mb-6">
-                <div class="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-500">
-                    <i class="fa-solid fa-database text-lg"></i>
+        <!-- 1. 데이터 수집 및 사생활 침해 -->
+        <section class="grid md:grid-cols-3 gap-8">
+            <div class="md:col-span-2 card-hover bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-500">
+                        <i class="fa-solid fa-user-lock"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold">1. 데이터 수집 및 사생활 침해</h2>
                 </div>
-                <h2 class="text-xl font-bold">1. 데이터 수집 및 사생활 침해 이슈</h2>
+                <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                    AI 모델 학습을 위한 방대한 데이터 수집은 필수적이지만, 무분별한 <strong>웹 스크레이핑</strong>으로 인해 사용자의 '잊힐 권리'가 무너지고 있습니다. SNS 사진이나 게시물이 당사자 동의 없이 학습 데이터로 활용되는 사례가 급증하고 있습니다.
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-700">
+                        <h4 class="font-bold text-sm mb-1 text-brand">무단 수집</h4>
+                        <p class="text-xs opacity-70 leading-normal">공개된 정보의 상업적 무단 학습 논란</p>
+                    </div>
+                    <div class="p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-700">
+                        <h4 class="font-bold text-sm mb-1 text-brand">데이터 주권</h4>
+                        <p class="text-xs opacity-70 leading-normal">자신의 디지털 발자취 통제권 요구</p>
+                    </div>
+                </div>
             </div>
-            <div class="grid md:grid-cols-2 gap-8 text-sm md:text-base">
-                <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-2xl">
-                    <h4 class="font-bold text-indigo-600 dark:text-indigo-400 mb-2">무분별한 데이터 긁어모으기 (Scraping)</h4>
-                    <p class="opacity-80 leading-relaxed">
-                        AI 학습을 위해 웹상의 공개된 정보를 무단으로 수집하는 행위가 법적 분쟁의 중심이 되고 있습니다. 개인의 SNS 게시물, 사진 등이 본인 동의 없이 학습에 사용되어 <strong>'잊힐 권리'</strong>를 침해하는 사례가 보고되고 있습니다.
-                    </p>
-                </div>
-                <div class="p-5 bg-slate-50 dark:bg-slate-800/50 rounded-2xl">
-                    <h4 class="font-bold text-indigo-600 dark:text-indigo-400 mb-2">그림자 데이터 (Shadow Data)</h4>
-                    <p class="opacity-80 leading-relaxed">
-                        기업 내부에서 직원들이 외부 AI를 사용하며 입력한 기밀 정보가 의도치 않게 AI 모델에 저장되어 타인에게 유출되는 <strong>'그림자 데이터'</strong> 유출 사고가 잇따르고 있습니다.
-                    </p>
+            
+            <div class="card-hover bg-brand text-white p-8 rounded-3xl flex flex-col justify-center text-center">
+                <div class="text-4xl font-black mb-2">12.4%</div>
+                <p class="text-sm opacity-80 leading-snug">AI 입력 시 보안 설정을 <br> 적용한 사용자 비율</p>
+                <div class="mt-6 pt-6 border-t border-white/20">
+                    <p class="text-xs font-semibold uppercase tracking-widest mb-2">Notice</p>
+                    <p class="text-xs opacity-70">인식은 높으나 실제 행동으로 이어지는 비율은 낮음</p>
                 </div>
             </div>
         </section>
 
-        <!-- Section 2: 보안 위협 및 취약점 -->
-        <section id="threat" class="section-card bg-white dark:bg-slate-900 rounded-3xl p-8 md:p-10 shadow-sm border-l-4 border-l-rose-500">
-            <div class="flex items-center gap-4 mb-6">
+        <!-- 2. 보안 취약점: 그림자 데이터와 프롬프트 인젝션 -->
+        <section class="card-hover bg-white dark:bg-slate-900 p-8 md:p-10 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center gap-3 mb-8">
                 <div class="w-10 h-10 rounded-xl bg-rose-500/10 flex items-center justify-center text-rose-500">
-                    <i class="fa-solid fa-triangle-exclamation text-lg"></i>
+                    <i class="fa-solid fa-user-secret"></i>
                 </div>
-                <h2 class="text-xl font-bold">2. 보안 위협 및 취약점</h2>
+                <h2 class="text-2xl font-bold">2. 신종 보안 위협: 그림자 데이터</h2>
             </div>
-            <div class="grid md:grid-cols-2 gap-8 text-sm md:text-base">
-                <div class="p-5 border border-rose-100 dark:border-rose-900/30 rounded-2xl">
-                    <h4 class="font-bold text-rose-600 dark:text-rose-400 mb-2 flex items-center gap-2">
-                        <i class="fa-solid fa-bug"></i> 프롬프트 인젝션 (Prompt Injection)
-                    </h4>
-                    <p class="opacity-80 leading-relaxed">
-                        AI에게 특정한 질문을 던져 내부 금기사항을 무력화하거나, 학습된 민감한 데이터를 출력하게 만드는 보안 공격이 정교해지고 있습니다.
-                    </p>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="space-y-6">
+                    <div class="group">
+                        <h4 class="font-bold text-rose-500 mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-bug"></i> 프롬프트 인젝션
+                        </h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            AI에게 특수 질문을 던져 내부 알고리즘을 무력화하거나, 학습된 기업 기밀을 빼내는 고도화된 해킹 기법입니다.
+                        </p>
+                    </div>
+                    <div class="group">
+                        <h4 class="font-bold text-rose-500 mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-mask"></i> 딥페이크 특이점
+                        </h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            실제와 구분이 불가능한 음성·영상 합성은 보안 인증 우회 및 사회공학적 해킹에 악용되어 정보 생태계를 위협합니다.
+                        </p>
+                    </div>
                 </div>
-                <div class="p-5 border border-rose-100 dark:border-rose-900/30 rounded-2xl">
-                    <h4 class="font-bold text-rose-600 dark:text-rose-400 mb-2 flex items-center gap-2">
-                        <i class="fa-solid fa-user-secret"></i> 딥페이크와 사회공학적 해킹
-                    </h4>
-                    <p class="opacity-80 leading-relaxed">
-                        AI로 생성한 가짜 목소리나 영상을 이용해 보안 인증을 통과하거나 지인을 사칭하는 범죄가 급증하고 있습니다. 이는 <strong>인식론적 교란</strong>을 야기하는 기술적 특이점입니다.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 3: 저작권 및 창작자 생존권 (추가된 내용) -->
-        <section id="copyright" class="section-card bg-white dark:bg-slate-900 rounded-3xl p-8 md:p-10 shadow-sm border-l-4 border-l-amber-500">
-            <div class="flex items-center gap-4 mb-6">
-                <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500">
-                    <i class="fa-solid fa-palette text-lg"></i>
-                </div>
-                <h2 class="text-xl font-bold">3. 저작권 갈등과 창작자 생존권</h2>
-            </div>
-            <div class="space-y-6 text-sm md:text-base">
-                <div class="p-6 bg-amber-50/30 dark:bg-amber-900/10 rounded-2xl border border-amber-100 dark:border-amber-900/30">
-                    <h4 class="font-bold mb-3 flex items-center gap-2"><i class="fa-solid fa-circle-question text-amber-600"></i> 기계적 짜깁기론 vs 기술적 진보</h4>
-                    <p class="opacity-80 leading-relaxed mb-4">
-                        대중은 AI 창작을 영감이 아닌 기존 작품을 쪼개 붙인 <strong>'콜라주'</strong>로 인식하며 거부감을 보입니다. 반면 기술 측은 '아이디어나 화풍'은 저작권 보호 대상이 아니라고 맞서고 있습니다.
-                    </p>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div class="p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm">
-                            <span class="text-xs font-bold text-rose-500 uppercase">기술적 보호 조치</span>
-                            <p class="mt-1 font-semibold">Photoguard & Illuminarty</p>
-                            <p class="text-xs opacity-60">무단 학습을 방해하거나 생성물을 판별하는 기술 도입 시급</p>
-                        </div>
-                        <div class="p-4 bg-white dark:bg-slate-800 rounded-xl shadow-sm">
-                            <span class="text-xs font-bold text-blue-500 uppercase">제도적 대책</span>
-                            <p class="mt-1 font-semibold">공정한 보상 체계 구축</p>
-                            <p class="text-xs opacity-60">원작자에게 저작권료를 지불하는 'AI 학습 데이터 거래' 모델 필요</p>
-                        </div>
+                <div class="bg-slate-950 p-6 rounded-2xl border border-white/5 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-3 opacity-20">
+                        <i class="fa-solid fa-terminal text-4xl text-brand"></i>
+                    </div>
+                    <h5 class="text-brand font-mono text-xs mb-4 uppercase tracking-widest font-bold">Threat Alert</h5>
+                    <div class="space-y-3 font-mono text-xs text-slate-400">
+                        <p class="text-emerald-500">> 분석 중: Shadow Data Detection...</p>
+                        <p>> [위험] 사내 기밀 프롬프트 입력 감지</p>
+                        <p>> [위험] 로봇청소기 홈캠 해킹 시도 감지</p>
+                        <div class="pt-2 animate-pulse text-rose-500">> 공격 유형: Prompt Injection</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 4: 규제 및 대응 현황 -->
-        <section id="response" class="section-card bg-white dark:bg-slate-900 rounded-3xl p-8 md:p-10 shadow-sm border-l-4 border-l-emerald-500">
-            <div class="flex items-center gap-4 mb-6">
-                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500">
-                    <i class="fa-solid fa-gavel text-lg"></i>
+        <!-- 3. 실시간 여론 및 대응 (댓글 반응 포함) -->
+        <section class="grid md:grid-cols-2 gap-8">
+            <div class="card-hover bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800">
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-comments text-emerald-500"></i> 사용자 리얼 보이스
+                </h3>
+                <div class="space-y-4">
+                    <div class="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                        <p class="text-sm italic">"영상 보고 바로 GPT 설정에서 '정보수집 허용 안함'으로 바꿨습니다. 너무 중요한 정보네요."</p>
+                        <div class="mt-2 text-[10px] text-brand font-bold uppercase tracking-wider">— 구독자 J님</div>
+                    </div>
+                    <div class="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                        <p class="text-sm italic">"갤럭시 유저분들은 프로필 클릭 후 '데이터 제어'에서 모델 개선 끄시면 됩니다!"</p>
+                        <div class="mt-2 text-[10px] text-emerald-500 font-bold uppercase tracking-wider">— 팁 공유 유저</div>
+                    </div>
                 </div>
-                <h2 class="text-xl font-bold">4. 규제 및 대응 현황 (2025~2026)</h2>
             </div>
-            <div class="grid md:grid-cols-2 gap-6 text-sm">
-                <div class="p-5 bg-emerald-50/50 dark:bg-emerald-900/10 rounded-2xl">
-                    <h4 class="font-bold mb-2">AI 프라이버시 가이드라인</h4>
-                    <p class="opacity-80 leading-relaxed">개보위 등 규제 기관은 설계 단계부터 보안을 내장하는 <strong>'Privacy by Design'</strong>을 의무화하고 있습니다.</p>
-                </div>
-                <div class="p-5 bg-emerald-50/50 dark:bg-emerald-900/10 rounded-2xl">
-                    <h4 class="font-bold mb-2">가명정보 활용 엄격화</h4>
-                    <p class="opacity-80 leading-relaxed">개인을 식별할 수 없도록 하는 <strong>가명처리 기술</strong>과 결과물의 안전성 검증 시스템이 기업의 필수 과제입니다.</p>
-                </div>
-            </div>
-        </section>
 
-        <!-- Section 5: 뉴스 요약 -->
-        <section id="news" class="section-card bg-white dark:bg-slate-900 rounded-3xl p-8 md:p-10 shadow-sm">
-            <div class="flex items-center gap-4 mb-6">
-                <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500">
-                    <i class="fa-solid fa-newspaper text-lg"></i>
-                </div>
-                <h2 class="text-xl font-bold">🗞️ 관련 뉴스 주요 헤드라인</h2>
-            </div>
-            <div class="overflow-hidden rounded-2xl border border-slate-100 dark:border-slate-800">
-                <table class="w-full text-left text-xs md:text-sm">
-                    <thead class="bg-slate-50 dark:bg-slate-800">
-                        <tr>
-                            <th class="p-4 font-bold w-24">키워드</th>
-                            <th class="p-4 font-bold">주요 기사 내용 요약</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
-                        <tr>
-                            <td class="p-4 font-bold text-indigo-500">데이터 수집</td>
-                            <td class="p-4">"공개 정보라도 무단 학습은 위법"... 글로벌 플랫폼 대상 사생활 침해 조사 착수</td>
-                        </tr>
-                        <tr>
-                            <td class="p-4 font-bold text-rose-500">보안 사고</td>
-                            <td class="p-4">AI 챗봇 대화창에 남의 상담 기록이? 시스템 오류로 인한 대규모 개인정보 노출 사고 발생</td>
-                        </tr>
-                        <tr>
-                            <td class="p-4 font-bold text-amber-500">사생활 보호</td>
-                            <td class="p-4">로봇청소기·홈카메라 등 AI 가전 해킹 우려 확산... 정부, 보안 인증 등급제 강화</td>
-                        </tr>
-                        <tr>
-                            <td class="p-4 font-bold text-emerald-500">기업 보안</td>
-                            <td class="p-4">"우리만의 AI 쓴다"... 보안 우려에 '폐쇄형(On-premise) AI' 도입하는 대기업들</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="card-hover bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800">
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-gavel text-amber-500"></i> 정책 및 대응 방향
+                </h3>
+                <ul class="space-y-4 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-brand mt-1"></i>
+                        <span><strong>Privacy by Design:</strong> 기획 단계부터 보안 내재화 의무화</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-brand mt-1"></i>
+                        <span><strong>폐쇄형 AI(On-premise):</strong> 기밀 보호를 위한 사내 독립 서버 구축</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-brand mt-1"></i>
+                        <span><strong>가명정보 활용:</strong> 개인 식별 불가능한 데이터 학습 표준화</span>
+                    </li>
+                </ul>
             </div>
         </section>
 
         <!-- Summary Banner -->
-        <div class="bg-brand text-white p-10 rounded-[2.5rem] shadow-xl text-center relative overflow-hidden">
-            <div class="absolute inset-0 bg-white/5 pointer-events-none"></div>
-            <h3 class="text-xl font-bold mb-4">💡 종합 결론</h3>
-            <p class="text-sm md:text-base leading-relaxed opacity-90 max-w-3xl mx-auto">
-                AI는 우리에게 편리함을 주지만, 그 과정에서 <strong>'나도 모르게 수집되는 데이터'</strong>와 <strong>'학습된 데이터의 재유출'</strong>이라는 숙제를 안겨주고 있습니다. 최근 기사들은 공통적으로 AI 사용 시 민감 정보 입력 자제와 기업의 투명한 데이터 관리 정책을 강력히 요구하고 있습니다.
+        <div class="bg-gradient-to-br from-brand to-indigo-900 p-12 rounded-[2.5rem] shadow-2xl text-center relative overflow-hidden">
+            <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+            <h3 class="text-2xl font-bold text-white mb-6 relative z-10">데이터 주권 시대를 위한 제언</h3>
+            <p class="text-white/80 max-w-2xl mx-auto leading-relaxed relative z-10 text-lg">
+                AI 시대의 진정한 혁신은 기술의 속도가 아니라, 우리가 얼마나 안전하게 <strong>데이터를 통제</strong>하고 개인의 권리를 보호할 수 있느냐에 달려 있습니다. 기술 발전과 신뢰 사이의 균형을 찾는 것이 우리의 다음 과제입니다.
             </p>
         </div>
 
     </main>
 
-    <footer class="bg-slate-100 dark:bg-slate-900 py-10 text-center transition-colors">
-        <p class="text-[10px] md:text-xs opacity-50 uppercase tracking-widest font-bold">
-            Keywords: AI Ethics, Privacy, Data Scraping, Copyright, Security
-        </p>
+    <footer class="py-20 border-t border-slate-200 dark:border-slate-800 text-center">
+        <div class="flex justify-center gap-6 mb-8 text-slate-400">
+            <i class="fa-solid fa-shield-halved text-2xl"></i>
+            <i class="fa-solid fa-database text-2xl"></i>
+            <i class="fa-solid fa-lock text-2xl"></i>
+        </div>
+        <p class="text-xs font-bold tracking-[0.4em] text-slate-400 uppercase mb-4">AI Security Analysis Archive</p>
+        <p class="text-sm opacity-60">© 2026 PNU Project Analysis. All Rights Reserved.</p>
     </footer>
 
     <script>
@@ -232,6 +210,7 @@
         const themeIcon = document.getElementById('theme-icon');
         const html = document.documentElement;
 
+        // Dark Mode Logic
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             html.classList.add('dark');
             themeIcon.classList.replace('fa-moon', 'fa-sun');
@@ -247,17 +226,18 @@
             }
         });
 
+        // Intersection Observer for Animation
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('opacity-100', 'translate-y-0');
-                    entry.target.classList.remove('opacity-0', 'translate-y-8');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
                 }
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.section-card').forEach(el => {
-            el.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700');
+        document.querySelectorAll('.card-hover').forEach(el => {
+            el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700');
             observer.observe(el);
         });
     </script>
